@@ -1,0 +1,24 @@
+
+.header {
+    background-color: #6b37b7;
+}
+
+    .header:hover {
+        background-color: #6b37b7;
+    }
+
+a {
+    color: #ffffff;
+    margin: 10px 10px 10px 10px;
+}
+
+    a:hover {
+        background-color: #0d6efd;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+h1 {
+    text-align: center;
+    padding: 120px;
+}
