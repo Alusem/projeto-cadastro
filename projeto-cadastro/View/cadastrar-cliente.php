@@ -39,45 +39,44 @@
                             echo $erro;
                             echo "<br>";
                         }
-                        session_unset();
                     }
 
                     if (is_array($_SESSION) && isset($_SESSION['cadastroRealizado'])){
                         $sucesso = $_SESSION['cadastroRealizado'];
                         echo $sucesso;
-                        session_unset();
                     }
-                ?>
 
-                <?php
-                
+                    if (is_array($_SESSION) && isset($_SESSION['camposForm'])){
+                        $campos = $_SESSION['camposForm'];
+                    }
+                    session_unset();
                 ?>
 
             </div>
         <form method="POST" action="../PHP/cadastrar.php">
             <div>
                 <label>Nome</label><br>
-                <input class="input" minlength="3" type="text" name="nome" id="inputNome" placeholder="Nome" required><br>
+                <input class="input" minlength="3" type="text" name="nome" id="inputNome" placeholder="Nome" value="<?php if (isset($campos)){ echo $campos['nome'];}?>" required><br>
             </div>
 
             <div>
                 <label>CPF</label><br>
-                <input class="input" minlength="14" maxlength="14" pattern="^\d{3}.\d{3}.\d{3}-\d{2}$" type="text" name="cpf" id="inputCPF" placeholder="CPF xxx.xxx.xxx-xx" required /><br>
+                <input class="input" minlength="14" maxlength="14" pattern="^\d{3}.\d{3}.\d{3}-\d{2}$" type="text" name="cpf" id="inputCPF" placeholder="CPF xxx.xxx.xxx-xx" value="<?php if (isset($campos)){ echo $campos['cpf'];}?>" required /><br>
             </div>
 
             <div>
                 <label>Apelido</label><br>
-                <input class="input" minlength="3" maxlength="50" type="text" name="apelido" id="inputApelido" placeholder="Apelido" required><br>
+                <input class="input" minlength="3" maxlength="50" type="text" name="apelido" id="inputApelido" placeholder="Apelido" value="<?php if (isset($campos)){ echo $campos['apelido'];}?>" required><br>
             </div>
 
             <div>
                 <label>Telefone</label><br>
-                <input class="input" minlength="3" maxlength="12" pattern="^\d{2}-\d{9}$" type="tel" name="telefone" id="inputTelefone" placeholder="Telefone xx-xxxxxxxxx" required><br>
+                <input class="input" minlength="3" maxlength="12" pattern="^\d{2}-\d{9}$" type="tel" name="telefone" id="inputTelefone" placeholder="Telefone xx-xxxxxxxxx" value="<?php if (isset($campos)){ echo $campos['telefone'];}?>" required><br>
             </div>
 
             <div>
                 <label>Email</label><br>
-                <input class="input" minlength="6" type="email" name="email" id="inputEmail" placeholder="Email" required><br>
+                <input class="input" minlength="6" type="email" name="email" id="inputEmail" placeholder="Email" value="<?php if (isset($campos)){ echo $campos['email'];}?>" required><br>
             </div>
 
             <div class="btn1">
