@@ -3,6 +3,11 @@
 	require '../PHP/conexao.php';
 	global $pdo;
 
+    $nome = addslashes($_POST['nome']);
+    $apelido = addslashes($_POST['apelido']);
+    $telefone = addslashes($_POST['telefone']);
+    $email = addslashes($_POST['email']);
+
 if (strlen($_POST['nome']) ==  0){
 	$erros[] = utf8_encode('Preencha o campo nome.');
 }
@@ -43,6 +48,8 @@ if (strlen($_POST['email']) == 0){
 }
 
 if (isset($erros) && count($erros) > 0) {
+    
+    $_SESSION['camposForm'] = $_POST;
     $_SESSION['errosReportados'] = $erros;
     header("Location: ../View/cadastrar-cliente.php");
 
